@@ -7,11 +7,11 @@ function Home() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const sessionId = sessionStorage.getItem('sessionId');
+        const sessionId = localStorage.getItem('sessionId');
 
         if (!sessionId) {
             alert('无效 session，请登录');
-            navigate('/login');
+            navigate('/auth');
             return;
         }
 
@@ -23,18 +23,18 @@ function Home() {
                 });
                 const usernameFromServer = res.data.data;
                 setUsername(usernameFromServer);
-                sessionStorage.setItem('username', usernameFromServer);
+                localStorage.setItem('username', usernameFromServer);
             } catch (error) {
                 console.error('认证失败:', error);
-                navigate('/login');
+                navigate('/auth');
             }
         })();
     }, [navigate]);
 
     const handleLogout = () => {
-        sessionStorage.removeItem('sessionId');
-        sessionStorage.removeItem('username');
-        navigate('/login');
+        localStorage.removeItem('sessionId');
+        localStorage.removeItem('username');
+        navigate('/auth');
     };
 
     return (

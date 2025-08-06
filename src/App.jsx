@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import AuthPage from "@/pages/Auth.jsx";
 
 function App() {
     return (
@@ -12,8 +13,10 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/auth" element={<AuthPage />} />
             </Routes>
         </Router>
+
     );
 }
 
